@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:micard/custom_card.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,8 +13,37 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark(useMaterial3: false),
       home: Scaffold(
-        backgroundColor: Colors.teal,
+        appBar: AppBar(
+          title: const Text('GitHub Perfil'),
+        ),
+        drawer: Drawer(
+          child: Column(
+            children: [
+              UserAccountsDrawerHeader(
+                accountName: Text('José da Silva Vieira'),
+                accountEmail: Text('jsilvavieira@github.com'),
+                currentAccountPicture: CircleAvatar(
+                  backgroundImage: AssetImage('images/profile.jpg'),
+                ),
+              ),
+              ListTile(
+                leading: Icon(Icons.person),
+                title: Text('Perfil'),
+              ),
+              ListTile(
+                leading: Icon(Icons.book),
+                title: Text('Repositórios'),
+              ),
+              ListTile(
+                leading: Icon(Icons.star),
+                title: Text('Favoritos'),
+              ),
+            ],
+          ),
+        ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -23,33 +51,125 @@ class MyApp extends StatelessWidget {
               radius: 60.0,
               backgroundImage: AssetImage('images/profile.jpg'),
             ),
-            Text(
-              'Ehmad Saeed',
-              style: TextStyle(
-                fontFamily: 'Pacifico',
-                color: Colors.white,
-                fontSize: 40,
-                fontWeight: FontWeight.bold,
-              ),
+            SizedBox(
+              height: 5,
             ),
             Text(
-              'FLUTTER DEVELOPER',
+              'José da Silva Vieira',
               style: TextStyle(
-                fontSize: 20,
-                color: Colors.teal[100],
+                color: Colors.white,
+                fontSize: 30,
                 fontWeight: FontWeight.bold,
               ),
             ),
             SizedBox(
-              height: 20,
-              width: 150,
-              child: Divider(
-                color: Colors.teal.shade100,
+              height: 5,
+            ),
+            Text(
+              'jsvieira',
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.white60,
+                fontWeight: FontWeight.bold,
               ),
             ),
-            CustomCard(text: '+55 11 987661142', icon: Icons.phone),
-            CustomCard(text: 'saeed@gmail.com', icon: Icons.email),
+            SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.map_rounded,
+                  color: Colors.white,
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  'Brazil, São Paulo, SP',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.email,
+                  color: Colors.white,
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  'jsilvavieira@github.com',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.people,
+                  color: Colors.white,
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  '32',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  width: 5,
+                ),
+                Text(
+                  'seguidores',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 15,
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  '45',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  width: 5,
+                ),
+                Text(
+                  'seguindo',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 15,
+                  ),
+                ),
+              ],
+            ),
           ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          child: Icon(Icons.add),
         ),
       ),
     );
